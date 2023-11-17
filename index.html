@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Défi Robotique Agricole</title>
+    <style>
+
+        body {
+            background-image: url("./images/GDRA_Hacker_grande_taille.png");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        nav {
+            margin-right: 20px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .decompte{
+            text-align: center;
+            font-size: 200 px;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            max-height: 50px;
+        }
+
+        nav ul {
+            display: none;
+            padding: 20px;
+        }
+
+        /* nav:hover ul {
+            display: block;
+            background-color: #000;
+            color: #fff;
+            position: absolute;
+            margin-top: 15px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }*/
+
+        nav ul.open {
+            display: block;
+            background-color: #000;
+            color: #fff;
+            position: absolute;
+            margin-top: 5px;
+            padding: 10px;
+            max-width: 200px;
+            left: auto; 
+            right: 0; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }   
+
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 0px 7px;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+        }
+
+    </style>
+</head>
+
+
+<body>
+ <header>
+    <img src="./images/logo_gdra.png" alt="Logo 1" class="logo">
+    <nav>
+        <!-- <button id="menuButton">Menu</button> -->
+        <ul id="menu">
+          <li><a href="http://www.example.com/home">Accueil</a></li>
+          <li><a href="#">A propos</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+     </nav>
+ </header>
+ <main>
+    <h1>Lancement du <br> Hackathon dans</h1>
+    <div class="decompte" id="countdown" font-size="60px">
+        <div ></div>
+    </div>
+ </main>
+ <footer>
+    <div class="logos">
+        <img src="./images/INRAE.jpg" alt="Logo 1" class="logo">  
+        <img src="./images/logo_fira_24.png" alt="Logo 2" class="logo">
+        <img src="./images/logo_robagri.jpeg" alt="Logo 3" class="logo">
+    </div>
+ </footer>
+ <script src="script.js"></script>
+</body>
+
+<script>
+    window.onload = function() {
+        const countdown = document.getElementById('countdown');
+        const targetDate = new Date('2023-12-04T16:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const remainingTime = targetDate - now;
+            const remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const remainingHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const remainingMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            countdown.style.fontSize = '40px';
+            countdown.style.fontWeight = 'bold';
+            countdown.textContent = `${remainingDays} jours, ${remainingHours} heures, ${remainingMinutes} minutes et ${remainingSeconds} secondes`;
+        }
+
+        /* document.getElementById('menuButton').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('open'); 
+        }); */
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    };
+
+
+</script>
+
+</html>
